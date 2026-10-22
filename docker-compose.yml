@@ -34,7 +34,7 @@ services:
       DB_USER: postgres
       DB_PASSWORD: postgrespassword
     ports:
-      - "8080:8080"
+      - "8082:8082"
 
   adminer:
     image: adminer:latest
