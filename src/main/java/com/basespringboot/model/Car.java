@@ -1,5 +1,7 @@
 package com.basespringboot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +18,7 @@ public class Car {
     
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String name;
     private String marque;
@@ -25,5 +27,6 @@ public class Car {
 
     @ManyToOne 
     @JoinColumn(name = "garage_id")
+    @JsonIgnore 
     private Garage garage;
 }

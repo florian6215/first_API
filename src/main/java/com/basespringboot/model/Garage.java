@@ -1,5 +1,6 @@
 package com.basespringboot.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -18,7 +19,7 @@ public class Garage {
     private String name;
     private String address;
 
-    @OneToMany(mappedBy = "garage")
-    private List<Car> cars;
+    @OneToMany(mappedBy = "garage",cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Car> cars = new ArrayList<>();
 
 }
