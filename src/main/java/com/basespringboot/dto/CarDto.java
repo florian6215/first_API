@@ -13,4 +13,5 @@ public class CarDto {
     private String marque;
     private String couleur;
     private int annee;
+    private Long garageId;
 }

@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.basespringboot.dto.CarDto;
 import com.basespringboot.model.Car;
+import com.basespringboot.model.Garage;
 import com.basespringboot.repository.CarRepository;
+import com.basespringboot.repository.GarageRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CarServiceImpl implements CarService {
     private final CarRepository carRepository;
+    private final GarageRepository garageRepository;
 
     @Override 
     public List<Car> getAllCars(){
@@ -35,6 +38,14 @@ public class CarServiceImpl implements CarService {
             car.setMarque(carDto.getMarque());
             car.setCouleur(carDto.getCouleur());
             car.setAnnee(carDto.getAnnee());
+            
+            if (carDto.getGarageId() != null) {
+                Garage garage = garageRepository.findById(carDto.getGarageId()).orElse(null);
+                car.setGarage(garage);
+            } else {
+                car.setGarage(null);
+            }
+
             return carRepository.save(car);
         });
     }
@@ -55,6 +66,11 @@ public class CarServiceImpl implements CarService {
         car.setMarque(carDto.getMarque());
         car.setCouleur(carDto.getCouleur());
         car.setAnnee(carDto.getAnnee());
+
+        if (carDto.getGarageId() != null) {
+            Garage garage = garageRepository.findById(carDto.getGarageId()).orElse(null);
+            car.setGarage(garage);
+        }
         
         return carRepository.save(car);
     }

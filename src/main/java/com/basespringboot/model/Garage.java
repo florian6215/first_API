@@ -18,7 +18,7 @@ public class Garage {
     private String name;
     private String address;
 
-    @OneToMany(mappedBy = "garage",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "garage")
     private List<Car> cars;
 
 }
