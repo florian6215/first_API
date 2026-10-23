@@ -32,8 +32,9 @@ public class CarServiceImpl implements CarService {
     public Optional<Car> update(Long id,CarDto carDto){
         return carRepository.findById(id).map(car->{
             car.setName(carDto.getName());
-            car.setRarety(carDto.getRarety());
-            car.setBoostSpeed(carDto.getBoostSpeed());
+            car.setMarque(carDto.getMarque());
+            car.setCouleur(carDto.getCouleur());
+            car.setAnnee(carDto.getAnnee());
             return carRepository.save(car);
         });
     }
@@ -51,8 +52,9 @@ public class CarServiceImpl implements CarService {
     public Car save(CarDto carDto) {
         Car car = new Car();
         car.setName(carDto.getName());
-        car.setRarety(carDto.getRarety());
-        car.setBoostSpeed(carDto.getBoostSpeed());
+        car.setMarque(carDto.getMarque());
+        car.setCouleur(carDto.getCouleur());
+        car.setAnnee(carDto.getAnnee());
         
         return carRepository.save(car);
     }

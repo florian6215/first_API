@@ -17,6 +17,7 @@ public class Car {
     private long id;
 
     private String name;
-    private String rarety;
-    private int boostSpeed;
+    private String marque;
+    private String couleur;
+    private int annee;
 }

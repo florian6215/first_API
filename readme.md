@@ -1,3 +1,7 @@
+# Gratien Nelson et Blanpain Florian
+
+# Projet: Ce projet consiste à créer une API REST CRUD avec le framework Spring Boot. Elle a pour thématique la gestion des véhicules permettant d'enregistrer, consulter, modifier et supprimer des données de manière sécurisée et performante.
+
 # baseSpringBoot
 
 A Spring Boot application using Java 21, Maven, and PostgreSQL. Docker Compose starts the application and its database together.
