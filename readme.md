@@ -1,6 +1,13 @@
-# Gratien Nelson et Blanpain Florian
+## Projet
+Ce projet consiste à créer une API REST CRUD avec le framework Spring Boot. Elle a pour thématique la gestion des véhicules permettant d'enregistrer, consulter, modifier et supprimer des données
 
-# Projet: Ce projet consiste à créer une API REST CRUD avec le framework Spring Boot. Elle a pour thématique la gestion des véhicules permettant d'enregistrer, consulter, modifier et supprimer des données de manière sécurisée et performante.
+
+## Groupe
+- GRATIEN Nelson
+- BLANPAIN Florian
+
+
+
 
 # baseSpringBoot
 
