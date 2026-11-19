@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.basespringboot.dto.CarDto;
 import com.basespringboot.model.Car;
 
+// Service contract defining car business operations
 public interface CarService {
     List<Car> getAllCars();
     Optional<Car> getCarId(Long id);

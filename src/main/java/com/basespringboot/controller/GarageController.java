@@ -21,33 +21,39 @@ import com.basespringboot.service.GarageService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
+// Exposes CRUD endpoints for garages under /garages
 @RequestMapping("/garages")
 @RestController
 @RequiredArgsConstructor
 public class GarageController {
     private final GarageService garageService;
 
+    // Create a new garage from validated request data
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Garage save(@Valid @RequestBody GarageDto garageDto) {
         return garageService.save(garageDto);
     }
 
+    // Retrieve all garages
     @GetMapping
     public List<Garage> getAllGarages() {
         return garageService.getAllGarages();
     }
 
+    // Retrieve a single garage by ID
     @GetMapping("/{id}")
     public Optional<Garage> getGarageById(@PathVariable Long id) {
         return garageService.getGarageById(id);
     }
 
+    // Update an existing garage by ID
     @PutMapping("/{id}")
     public Optional<Garage> update(@PathVariable Long id, @Valid @RequestBody GarageDto garageDto) {
         return garageService.update(id, garageDto);
     }
 
+    // Delete a garage by ID
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable Long id) {

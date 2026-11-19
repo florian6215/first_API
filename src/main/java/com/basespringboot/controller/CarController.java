@@ -20,12 +20,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-
+// Exposes CRUD endpoints for cars under /cars
 @RequestMapping("/cars")
 @RestController
 @RequiredArgsConstructor
 public class CarController {
     private final CarService carService;
+    // Create a new car from validated request data
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -33,21 +34,25 @@ public class CarController {
         return carService.save(carDto);
     }
 
+    // Retrieve all cars
     @GetMapping
     public List<Car> getAllCars() {
         return carService.getAllCars();
     }
 
+    // Retrieve a single car by ID
     @GetMapping("/{id}")
     public Optional<Car> getCarId(@PathVariable Long id) {
         return carService.getCarId(id);
     }
 
+    // Update an existing car by ID
     @PutMapping("/{id}")
     public Optional<Car> update(@PathVariable Long id, @Valid @RequestBody CarDto carDto) {
         return carService.update(id, carDto);
     }
 
+    // Delete a car by ID
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable Long id) {

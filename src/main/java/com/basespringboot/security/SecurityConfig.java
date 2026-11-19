@@ -14,14 +14,17 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+// Configures stateless JWT security and authentication beans
 @Configuration
 public class SecurityConfig {
 
+    // BCrypt encoder used for hashing user passwords
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // In-memory user store for authenticating requests
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder encoder) {
         var user = User.withUsername("nelflo")
@@ -31,11 +34,13 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(user);
     }
 
+    // Exposes Spring Security's AuthenticationManager for login endpoints
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
 
+    // Configures stateless session, public/protected routes, and JWT filter ordering
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthFilter jwtAuthFilter) throws Exception {
         return http

@@ -14,6 +14,7 @@ import com.basespringboot.repository.GarageRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
+// Transactional service implementation managing car persistence and garage links
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -21,16 +22,19 @@ public class CarServiceImpl implements CarService {
     private final CarRepository carRepository;
     private final GarageRepository garageRepository;
 
+    // Retrieve all cars from the database
     @Override 
     public List<Car> getAllCars(){
         return carRepository.findAll();
     }
 
+    // Retrieve a single car by ID if present
     @Override 
     public Optional<Car> getCarId(Long id){
         return carRepository.findById(id);
     }
 
+    // Update car fields and re-associate or clear its garage if needed
     @Override 
     public Optional<Car> update(Long id,CarDto carDto){
         return carRepository.findById(id).map(car->{
@@ -50,6 +54,7 @@ public class CarServiceImpl implements CarService {
         });
     }
 
+    // Delete a car by ID; returns false if no matching record exists
     @Override 
     public boolean delete(Long id){
         if(carRepository.existsById(id)){
@@ -59,6 +64,7 @@ public class CarServiceImpl implements CarService {
         return false;
     }
 
+    // Create and save a new car, optionally linking an existing garage
     @Override
     public Car save(CarDto carDto) {
         Car car = new Car();
