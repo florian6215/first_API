@@ -9,9 +9,8 @@ import lombok.Setter;
 public class CarDto {
     @NotBlank 
     private String name;
-
-    private String marque;
-    private String couleur;
-    private int annee;
+    private String brand;
+    private String color;
+    private int year;
     private Long garageId;
 }

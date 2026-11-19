@@ -35,9 +35,9 @@ public class CarServiceImpl implements CarService {
     public Optional<Car> update(Long id,CarDto carDto){
         return carRepository.findById(id).map(car->{
             car.setName(carDto.getName());
-            car.setMarque(carDto.getMarque());
-            car.setCouleur(carDto.getCouleur());
-            car.setAnnee(carDto.getAnnee());
+            car.setMarque(carDto.getBrand());
+            car.setCouleur(carDto.getColor());
+            car.setAnnee(carDto.getYear());
             
             if (carDto.getGarageId() != null) {
                 Garage garage = garageRepository.findById(carDto.getGarageId()).orElse(null);
@@ -63,9 +63,9 @@ public class CarServiceImpl implements CarService {
     public Car save(CarDto carDto) {
         Car car = new Car();
         car.setName(carDto.getName());
-        car.setMarque(carDto.getMarque());
-        car.setCouleur(carDto.getCouleur());
-        car.setAnnee(carDto.getAnnee());
+        car.setMarque(carDto.getBrand());
+        car.setCouleur(carDto.getColor());
+        car.setAnnee(carDto.getYear());
 
         if (carDto.getGarageId() != null) {
             Garage garage = garageRepository.findById(carDto.getGarageId()).orElse(null);
