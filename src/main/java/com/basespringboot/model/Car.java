@@ -21,9 +21,9 @@ public class Car {
     private Long id;
 
     private String name;
-    private String marque;
-    private String couleur;
-    private int annee;
+    private String brand;
+    private String color;
+    private int year;
 
     @ManyToOne 
     @JoinColumn(name = "garage_id")
